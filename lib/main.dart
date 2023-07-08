@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Calm Notify'),
     );
   }
 }
@@ -49,6 +52,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  bool _active =false;
 
   void _incrementCounter() {
     setState(() {
@@ -98,6 +103,30 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
+            SwitchListTile(
+              title: const Text('Attiva modalità',
+              textAlign: TextAlign.center,),
+              activeColor: Colors.green,
+              activeTrackColor: Colors.lightGreen,
+              inactiveThumbColor: Colors.white24,
+              inactiveTrackColor: Colors.black12,
+              value: _active,
+              onChanged: (value) {
+      setState(() => _active = value);
+      Fluttertoast.showToast(
+      msg: _active ? 'Modalità attiva' : 'Modalità disattiva', //corrisponde ad un if(_active){msg 'Attiva'}else{'Non attiva'}
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.grey[600],
+      textColor: Colors.white,
+      );
+      },
+
+
+
+      ),
+
+
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
@@ -113,3 +142,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
