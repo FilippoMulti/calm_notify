@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'silence.dart';
 
 
 void main() {
@@ -111,20 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
               inactiveThumbColor: Colors.white24,
               inactiveTrackColor: Colors.black12,
               value: _active,
-              onChanged: (value) {
-      setState(() => _active = value);
-      Fluttertoast.showToast(
-      msg: _active ? 'Modalità attiva' : 'Modalità disattiva', //corrisponde ad un if(_active){msg 'Attiva'}else{'Non attiva'}
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.grey[600],
-      textColor: Colors.white,
-      );
-      },
-
-
-
-      ),
+              onChanged: (value)=> setState(() => _active = value)
+     ),
 
 
             Text(
